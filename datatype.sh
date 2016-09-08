@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Enter Your Input Number"
+echo "Enter Your Number"
 read num
 if [ "$num" -ge 0 ]
         then
