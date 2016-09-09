@@ -29,13 +29,18 @@ function cleanRam() {
 	
 	memAvailPer=$1
 	if (( $(echo "$memAvailPer < 30.00" |bc -l) )); then
-		echo "Cleaning RAM ... .. ."
-		echo -ne '#####                     (33%)\r'
-		sleep 1
-		echo -ne '#############             (66%)\r'
+		echo -e "\033[0;31mCleaning RAM ... .. . \033[0m"
+		sleep 0.1
+		echo -ne "\033[0;34m=====>                            (20%)\r \033[0m"
+		sleep 0.1
+		echo -ne "\033[0;34m=============>                    (40%)\r \033[0m"
+		sleep 0.1
+		echo -ne "\033[0;34m=====================>            (60%)\r \033[0m"
+		sleep 0.1
+		echo -ne "\033[0;34m==========================>       (80%)\r \033[0m"
 		`echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null`
-		sleep 1
-		echo -ne '#######################   (100%)\r'
+		sleep 0.1
+		echo -ne "\033[0;34m==================================(100%)\r \033[0m"
 		echo -ne '\n'
 	else
 		echo "Good amount of RAM is available/free (`echo $memAvailPer`%). No need to clean RAM."
