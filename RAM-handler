@@ -1,0 +1,11 @@
+#!/bin/bash/
+FREE_DATA=`free -m | grep Mem` 
+CURRENT=`echo $FREE_DATA | cut -f3 -d' '`
+TOTAL=`echo $FREE_DATA | cut -f2 -d' '`
+RAM=`echo RAM: $(echo "scale = 2; $CURRENT/$TOTAL*100" | bc)`
+if [ $RAM -gt 10 2</dev/null> ]
+then
+sync; echo 3 > /proc/sys/vm/drop_caches 
+else
+echo "you have memory more than 10% memory"
+fi
