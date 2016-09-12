@@ -22,7 +22,7 @@ MEMT=$(echo "scale=2; ${MEMTOTAL}*.90" | bc)
 if (( $(echo "$MEMUSED > $MEMT" |bc ) )); then
    echo  "Memory has crossed the 90% threshold, Purging the Cache ......"
    sleep 3
-   echo 3 | sudo tee  /proc/sys/vm/drop_caches
+   echo 3 > /proc/sys/vm/drop_caches
    echo  -e  " FREE MEMORY ($MEMFREEP%)    :    \t$(( MEMFREE / 1024 )) MB "
    echo  -e  " USED MEMORY ($MEMUSEDP%)    :   \t$(( MEMUSED / 1024 )) MB "
 else
