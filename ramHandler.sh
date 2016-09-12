@@ -28,7 +28,7 @@ function avgCalculator() {
 function cleanRam() {
 	
 	memAvailPer=$1
-	if (( $(echo "$memAvailPer < 20.00" |bc -l) )); then
+	if (( $(echo "$memAvailPer < 40.00" |bc -l) )); then
 		echo -e "\033[0;31mCleaning RAM ... .. . \033[0m"
 		sleep 0.1
 		echo -ne "\033[0;34m=====>                            (20%)\r \033[0m"
